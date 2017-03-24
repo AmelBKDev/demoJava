@@ -1,6 +1,0 @@
-com\abk\spring\service\impl\UserDetailsServiceImpl.class
-com\abk\jsf\mbean\UserDetailsMBean.class
-com\abk\spring\dao\impl\UserDetailsDaoImpl.class
-com\abk\spring\dao\UserDetailsDao.class
-com\abk\hibernate\model\UserDetails.class
-com\abk\spring\service\UserDetailsService.class
