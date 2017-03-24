@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Users</title>
+</h:head>
+
+
+<h:body style="padding: 60px;">
+	<b:container>
+
+		<hr />
+		<h:form id="firstForm">
+			<b:panel title="Client Operations" look="success">
+
+				<b:row>
+					<b:column span="2">
+						<b:button value="Add User" look="success" icon="plus-sign"
+							onclick="$('.modalPseudoClass').modal();return false;"  style="width:100%" size="lg" />
+
+					</b:column>
+
+				</b:row>
+				<hr />
+				<b:dataTable ajax="true" id="table"
+					value="#{userDetailsMBean.userDetailsList}" var="c">
+					<b:dataTableColumn value="#{c.id}" />
+					<b:dataTableColumn value="#{c.firstName}" />
+					<b:dataTableColumn value="#{c.lastName}" />
+					<b:dataTableColumn value="#{c.email}" />
+					<b:dataTableColumn value="#{c.dob}" />
+					<b:dataTableColumn>
+					<f:facet name="header">
+						<h:outputText value="Operations" />
+					</f:facet>
+
+					<b:commandButton look="danger" value="" icon="remove"
+						action="#{userDetailsMBean.remove}" tooltip="Remove" update=":firstForm:table">
+						
+						 <f:setPropertyActionListener target="#{userDetailsMBean.id}" value="#{c.id}" />
+						</b:commandButton>
+
+					<b:commandButton style="margin:0 0 0 20px" look="warning"
+						value="" icon="pencil" tooltip="Edit" onclick="$('.modalPseudoClass').modal();return false;" update=":secondForm"/>
+				</b:dataTableColumn>
+
+				</b:dataTable>
+			</b:panel>
+		</h:form>
+		
+
+		<b:modal id="modalDialogID" styleClass="modalPseudoClass"
+			title="Add User">
+			<h:form id="secondForm">
+
+				<b:row>
+
+					<b:column span="6">
+						<b:inputText label="First Name" id="firstname"
+							value="#{userDetailsMBean.userDetails.firstName}" />
+					</b:column>
+					<b:column span="6">
+						<b:message for="firstname" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column span="6">
+						<b:inputText label="Last Name" id="lastname"
+							value="#{userDetailsMBean.userDetails.lastName}" />
+					</b:column>
+					<b:column span="6">
+						<b:message for="lastname" />
+					</b:column>
+				</b:row>
+				<b:row>
+
+					<b:column span="6">
+						<b:inputText label="Date of birth" id="dob"
+							value="#{userDetailsMBean.userDetails.dob}" />
+					</b:column>
+					<b:column span="6">
+						<b:message for="dob" />
+					</b:column>
+				</b:row>
+				<b:row>
+
+					<b:column span="6">
+						<b:inputText id="mail" label="Email"
+							value="#{userDetailsMBean.userDetails.email}" />
+					</b:column>
+					<b:column span="6">
+						<b:message for="mail" />
+					</b:column>
+				</b:row>
+				<b:row>
+
+					<b:column span="6">
+						<b:commandButton id="ajouter" look="success" value="Add" dismiss="modal" actionListener="#{userDetailsMBean.add}" update=":firstForm:table" style="width:100%" />
+						
+
+					</b:column>
+					<b:column span="6" >
+						<b:commandButton look="warning" value="Exit" dismiss="modal" onclick="$('.modalPseudoClass').modal('hide');return false;" style="width:100%"/>
+					</b:column>
+
+
+
+				</b:row>
+
+			</h:form>
+		</b:modal>
+	</b:container>
+</h:body>
+</html>
