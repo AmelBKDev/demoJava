@@ -14,10 +14,18 @@
 		<jsf2.version>2.2.12</jsf2.version>
 		<hibernate.version>4.3.8.Final</hibernate.version>
 		<mysqlconnector.version>5.1.34</mysqlconnector.version>
-		 <servlet.version>3.1.0</servlet.version>
+		<servlet.version>3.1.0</servlet.version>
 	</properties>
+	<repositories>
 
-	
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+
 
 	<dependencies>
 		<dependency>
@@ -27,11 +35,11 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-        <groupId>javax.servlet</groupId>
-        <artifactId>javax.servlet-api</artifactId>
-        <version>${servlet.version}</version>
-        <scope>provided</scope>
-    </dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
 
 
 		<!-- Spring and Transactions -->
@@ -89,17 +97,40 @@
 		</dependency>
 
 		<dependency>
-    <groupId>net.bootsfaces</groupId>
-    <artifactId>bootsfaces</artifactId>
-    <version>1.0.2</version>
-    <scope>compile</scope>
-</dependency>
-<dependency>
-    <groupId>org.primefaces</groupId>
-    <artifactId>primefaces</artifactId>
-    <version>6.0</version>
-    <scope>compile</scope>
-</dependency>
+			<groupId>net.bootsfaces</groupId>
+			<artifactId>bootsfaces</artifactId>
+			<version>1.0.2</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>6.0</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.primefaces.themes/bootstrap -->
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>1.0.10</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.4.0.Final</version>
+		</dependency>
+
 
 
 	</dependencies>
