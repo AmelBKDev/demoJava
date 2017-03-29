@@ -3,6 +3,8 @@ package com.abk.spring.dao.impl;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,8 +43,11 @@ public class UserDetailsDaoImpl implements UserDetailsDao {
 
 	@Transactional
 	@Override
-	public void add(UserDetails userDetails) {
-		sessionFactory.getCurrentSession().save(userDetails);
+	public Serializable add(UserDetails userDetails) {
+		Serializable res = sessionFactory.getCurrentSession().save(userDetails);
+		System.out.println(res);
+		return res;
+		
 		
 	}
 

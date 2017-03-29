@@ -1,5 +1,6 @@
 package com.abk.spring.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.abk.hibernate.model.UserDetails;
@@ -9,7 +10,7 @@ public interface UserDetailsDao {
 
     public List<UserDetails> getAllUserDetails();
 
-	public void add(UserDetails userDetails);
+	public Serializable add(UserDetails userDetails);
 
 	public void remove(UserDetails userDetails);
 

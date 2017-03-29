@@ -1,6 +1,9 @@
 package com.abk.spring.service.impl;
 
+import java.io.Serializable;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -30,8 +33,8 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	}
 
 	@Override
-	public void add(UserDetails userDetails) {
-		getUserDetailsDao().add(userDetails);
+	public Serializable add(@Valid UserDetails userDetails) {
+		 return getUserDetailsDao().add(userDetails);
 		
 	}
 
@@ -54,6 +57,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 		userDetails.setFirstName(null);
 		userDetails.setId(null);
 		userDetails.setLastName(null);
+		
 		
 	}
 	

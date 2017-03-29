@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+<b:modal id="confirmModal" styleClass="modalConfirmPseudoClass"
+	title="Delete Confirmation">
+
+
+	<h:form id="confirmForm">
+		<b:row>
+			<h4>
+				<h:outputText id="msg"
+					value="Are you sure you want to delete this user which id= #{userDetailsMBean.selectedUsr.id} ?" />
+			</h4>
+			<hr></hr>
+		</b:row>
+		<b:row>
+
+			<b:column span="6">
+				<b:commandButton look="danger" value="No"
+					onclick="$('.modalConfirmPseudoClass').modal('hide');return false;"
+					style="width:100%"></b:commandButton>
+			</b:column>
+			<b:column span="6">
+				<b:commandButton look="success" value="Yes"
+					actionListener="#{userDetailsMBean.remove}"
+					oncomplete="$('modalConfirmPseudoClass').modal('hide');return false;"
+					style="width:100%"></b:commandButton>
+			</b:column>
+		</b:row>
+	</h:form>
+</b:modal>
+</html>
