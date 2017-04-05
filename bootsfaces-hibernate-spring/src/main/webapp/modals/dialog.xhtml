@@ -3,12 +3,17 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:b="http://bootsfaces.net/ui"
-	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:b="http://bootsfaces.net/ui">
 	<b:modal id="modalDialogID" styleClass="modalPseudoClass"
-			title="Add User">
+			title="User">
 			<h:form id="secondForm">
+			
+			
+				<b:row rendered="#{userDetailsMBean.alert}">
+		
+					<b:alert severity="warning"><strong>Warning!</strong> Be sure that you want to delete this user. </b:alert>
+			
+				</b:row>
 
 				<b:row>
 
@@ -60,7 +65,7 @@
 				<b:row>
 
 					<b:column span="6">
-						<b:commandButton id="ajouter" look="#{userDetailsMBean.look}" value="#{userDetailsMBean.label}" dismiss="modal" actionListener="#{userDetailsMBean.dispatch}" update=":firstForm:table,:secondForm" style="width:100%" />
+						<b:commandButton id="dispatch" look="#{userDetailsMBean.look}" value="#{userDetailsMBean.label}" dismiss="modal" actionListener="#{userDetailsMBean.dispatch}" update=":firstForm,:secondForm" style="width:100%" />
 						
 
 					</b:column>

@@ -9,7 +9,7 @@
 	<title>Users</title>
 	
     <!-- Custom styles for this template -->
-    <link href="./css/sticky-footer.css" rel="stylesheet"/>
+   
 </h:head>
 
 
@@ -45,7 +45,7 @@
 					</f:facet>
 
 					<b:commandButton look="danger" value="" icon="remove"
-						action="#{userDetailsMBean.select(c)}" oncomplete="$('.modalConfirmPseudoClass').modal();return false;" tooltip="Remove" update=":firstForm:table,:confirmModal:confirmForm:msg">
+						action="#{userDetailsMBean.remove(c)}" oncomplete="$('.modalPseudoClass').modal();return false;" tooltip="Remove" update=":secondForm">
 						
 						
 						</b:commandButton>
@@ -60,14 +60,14 @@
 		
 
 		
-      <b:well class="footer"> <p> Demo for spring, hibernate, bootsfaces, validation beans with CRUD operations </p>
+      <b:well class="footer" style="text-align: center"> <p> Demo for spring, hibernate, bootsfaces, validation beans with CRUD operations </p>
       <p> Author : Amel Ben Khalifa </p>
       <p> 2017 </p>
         </b:well>
     
     
 		<ui:include src="modals/dialog.xhtml"></ui:include>
-		<ui:include src="modals/confirmDialog.xhtml"></ui:include>
+		
 		
 	</b:container>
 	

@@ -32,9 +32,14 @@ public class UserDetailsMBean implements Serializable {
 	
 	private static final String _LOOK_WARNING = "warning";
 	
+	private static final String _LOOK_DANGER = "danger";
+	
 	private static final String _LABEL_ADD = "Add";
 	
+	private static final String _LABEL_REMOVE = "Remove";
+	
 	private static final String _LABEL_EDIT = "Edit";
+	
 	
 	private static final long serialVersionUID = 5284375997088938438L;
 
@@ -47,11 +52,19 @@ public class UserDetailsMBean implements Serializable {
 
 	private List<UserDetails> userDetailsList;
 
-	private UserDetails selectedUsr;
-
 	private String look;
+
 	private String label;
 	
+	private boolean alert;
+
+	public boolean getAlert() {
+		return alert;
+	}
+
+	public void setAlert(boolean alert) {
+		this.alert = alert;
+	}
 
 	public String getLook() {
 		return look;
@@ -69,13 +82,7 @@ public class UserDetailsMBean implements Serializable {
 		this.label = label;
 	}
 
-	public UserDetails getSelectedUsr() {
-		return selectedUsr;
-	}
-
-	public void setSelectedUsr(UserDetails selectedUsr) {
-		this.selectedUsr = selectedUsr;
-	}
+	
 
 	public UserDetails getUserDetails() {
 		
@@ -115,6 +122,9 @@ public class UserDetailsMBean implements Serializable {
 		case _LABEL_EDIT:
 			update(a);
 			break;
+		case _LABEL_REMOVE:
+			remove(a);
+			break;
 		default:
 			break;
 		}
@@ -125,22 +135,17 @@ public class UserDetailsMBean implements Serializable {
 		}
 	}
 	public void add(ActionEvent a) {
-
-		//RequestContext.getCurrentInstance().closeDialog(arg0);
-		
-		Serializable res = userDetailsService.add(userDetails);
-		System.out.println(res);
+	
+		userDetailsService.add(userDetails);
 		userDetailsService.reset(userDetails);
-	//	RequestContext context = RequestContext.getCurrentInstance();
-		// context.update(":firstForm:table");
-	//	context.execute("$('.modalPseudoClass').modal('hide');");
-
+	
 	}
 
 	public void add(){
 		
 		look = _LOOK_SUCCESS;
 		label = _LABEL_ADD;
+		alert = false;
 		userDetailsService.reset(userDetails);
 		
 		
@@ -157,6 +162,13 @@ public class UserDetailsMBean implements Serializable {
 		userDetailsService.reset(userDetails);
 
 	}
+	
+	public void remove(UserDetails usr) {
+		look = _LOOK_DANGER;
+		label = _LABEL_REMOVE;
+		alert = true;
+		select(usr);
+	}
 
 	public void update(ActionEvent e) {
 
@@ -167,11 +179,9 @@ public class UserDetailsMBean implements Serializable {
 	public void update(UserDetails usr){
 		look = _LOOK_WARNING;
 		label = _LABEL_EDIT;
+		alert = false;
 		select(usr);
-		System.out.println("update");
-		System.out.println(look);
-		System.out.println(label);
-		System.out.println(userDetails.getFirstName());
+		
 	}
 	
 	public void reset(){
