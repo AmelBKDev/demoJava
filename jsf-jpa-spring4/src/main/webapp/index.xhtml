@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<h:head>
+	<title>Users</title>
+
+	<!-- Custom styles for this template -->
+
+</h:head>
+
+
+<h:body>
+	<ui:include src="menubf.xhtml" />
+	<hr />
+	<b:well />
+	<b:container style="padding: 60px;">
+
+
+		<h:form id="firstForm">
+			<b:panel title="User Operations" look="success">
+
+				<b:row>
+					<b:column span="2">
+						<b:commandButton value="Add User" look="success" icon="plus-sign"
+							action="#{userDetailsMBean.add}"
+							oncomplete="$('.modalPseudoClass').modal();return false;"
+							style="width:100%" size="lg" update=":secondForm" />
+
+					</b:column>
+
+				</b:row>
+				<hr />
+				<b:dataTable id="table" value="#{userDetailsMBean.userDetailsList}"
+					var="c">
+					<b:dataTableColumn value="#{c.id}" />
+					<b:dataTableColumn value="#{c.firstName}" />
+					<b:dataTableColumn value="#{c.lastName}" />
+					<b:dataTableColumn value="#{c.email}" />
+					<b:dataTableColumn value="#{c.dob}" />
+					<b:dataTableColumn>
+						<f:facet name="header">
+							<h:outputText value="Operations" />
+						</f:facet>
+
+						<b:commandButton look="danger" value="" icon="remove"
+							action="#{userDetailsMBean.remove(c)}"
+							oncomplete="$('.modalPseudoClass').modal();return false;"
+							tooltip="Remove" update=":secondForm">
+
+
+						</b:commandButton>
+
+						<b:commandButton style="margin:0 0 0 20px" look="warning" value=""
+							icon="pencil" tooltip="Edit"
+							action="#{userDetailsMBean.update(c)}"
+							oncomplete="$('.modalPseudoClass').modal();return false;"
+							update=":secondForm" />
+					</b:dataTableColumn>
+
+				</b:dataTable>
+			</b:panel>
+		</h:form>
+
+
+
+		<b:well class="footer" style="text-align: center">
+			<p>Demo for spring, hibernate, bootsfaces, validation beans with
+				CRUD operations</p>
+			<p>Author : Amel Ben Khalifa</p>
+			<p>2017</p>
+		</b:well>
+
+
+		<ui:include src="modals/dialog.xhtml"></ui:include>
+
+
+	</b:container>
+
+</h:body>
+</html>

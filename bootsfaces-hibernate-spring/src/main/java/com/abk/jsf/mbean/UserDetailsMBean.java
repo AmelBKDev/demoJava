@@ -7,18 +7,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 
 import org.primefaces.context.RequestContext;
 
 import com.abk.hibernate.model.UserDetails;
 import com.abk.spring.service.UserDetailsService;
 import com.abk.utils.ValidatorBean;
-
-import java.util.Set;
-import javax.validation.ConstraintViolation;
 
 @ManagedBean
 @ViewScoped
@@ -46,6 +40,10 @@ public class UserDetailsMBean implements Serializable {
 	// inject spring bean via DI
 	@ManagedProperty("#{userDetailsService}")
 	private UserDetailsService userDetailsService;
+
+	public UserDetailsService getUserDetailsService() {
+		return userDetailsService;
+	}
 
 	@ManagedProperty("#{userDetails}")
 	private UserDetails userDetails;
